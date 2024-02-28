@@ -59,9 +59,9 @@ public class Logic
 
     public void process(int size) {
 
-           // TODO -- add your code here
+// TODO -- add your code here
 
-       // повторение
+   // повторение
     private String repeat(String str, int count) {
         StringBuilder res = new StringBuilder();
         for (int i = 0; i < count; i++) {
@@ -76,13 +76,13 @@ public class Logic
         for (int i = 0; i <= size * 2 + 1; i++) {
             
             if (i == 0 || i == size * 2 + 1) {
-                System.out.print("+");
+                mOut.print("+");
             } 
             else {
-                System.out.print("-");
+                mOut.print("-");
             }
         }
-        System.out.println();
+        mOut.println();
     }
     
     // создание ромба
@@ -102,17 +102,17 @@ public class Logic
             
             // если центр
             if (i == size - 1) {
-                System.out.println("|" + "<" + repeat(String.valueOf(znak), i * 2) + ">" + "|");
+                mOut.println("|" + "<" + repeat(String.valueOf(znak), i * 2) + ">" + "|");
                 spaces++;
             // вверх ромба до середины
             } else if (i < size) {
-                System.out.println("|" + repeat(" ", spaces) + "/" + repeat(String.valueOf(znak), i + i) + "\\" + repeat(" ", spaces) + "|");
+                mOut.println("|" + repeat(" ", spaces) + "/" + repeat(String.valueOf(znak), i + i) + "\\" + repeat(" ", spaces) + "|");
                 spaces--;
                 // последнее вхождение в данное условие определит число знаков, от которого будем отталкиваться при создании второй части ромба
                 count = i;
             // низ ромба до конца
             } else {
-               System.out.println("|" + repeat(" ", spaces) + "\\" + repeat(String.valueOf(znak), count + count) + "/" + repeat(" ", spaces) + "|");
+               mOut.println("|" + repeat(" ", spaces) + "\\" + repeat(String.valueOf(znak), count + count) + "/" + repeat(" ", spaces) + "|");
                 spaces++;
                 count--;
             }
