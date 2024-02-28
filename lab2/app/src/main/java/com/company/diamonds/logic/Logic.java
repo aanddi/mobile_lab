@@ -59,8 +59,34 @@ public class Logic
 
     public void process(int size) {
 
-        // TODO -- add your code here
+           // TODO -- add your code here
 
+       // повторение
+    private String repeat(String str, int count) {
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            res.append(str);
+        }
+        return res.toString();
+    }
+  
+    // созлдает строку начальную и конечную
+    public void TopBottom_Borders(int size) {
+        // определили конец нашего рисунка на координате size * 2 + 1
+        for (int i = 0; i <= size * 2 + 1; i++) {
+            
+            if (i == 0 || i == size * 2 + 1) {
+                System.out.print("+");
+            } 
+            else {
+                System.out.print("-");
+            }
+        }
+        System.out.println();
+    }
+    
+    // создание ромба
+    public void process(int size) {
         TopBottom_Borders(size);
         
         int spaces = size - 1;
@@ -74,18 +100,19 @@ public class Logic
                 znak = '=';
             }
             
-            // строим ромб
+            // если центр
             if (i == size - 1) {
-                mOut.println("|" + "<" + String.valueOf(znak).repeat(i * 2) + ">" + "|");
+                System.out.println("|" + "<" + repeat(String.valueOf(znak), i * 2) + ">" + "|");
                 spaces++;
+            // вверх ромба до середины
             } else if (i < size) {
-                mOut.println("|" + " ".repeat(spaces) + "/" + String.valueOf(znak).repeat(i + i) + "\\" + " ".repeat(spaces) + "|");
+                System.out.println("|" + repeat(" ", spaces) + "/" + repeat(String.valueOf(znak), i + i) + "\\" + repeat(" ", spaces) + "|");
                 spaces--;
-                
                 // последнее вхождение в данное условие определит число знаков, от которого будем отталкиваться при создании второй части ромба
                 count = i;
+            // низ ромба до конца
             } else {
-                mOut.println("|" + " ".repeat(spaces) + "\\" + String.valueOf(znak).repeat(count + count) + "/" + " ".repeat(spaces) + "|");
+               System.out.println("|" + repeat(" ", spaces) + "\\" + repeat(String.valueOf(znak), count + count) + "/" + repeat(" ", spaces) + "|");
                 spaces++;
                 count--;
             }
