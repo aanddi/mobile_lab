@@ -22,13 +22,15 @@ public class MainActivity extends AppCompatActivity {
         etInput = (EditText) findViewById(R.id.editTextNumber);
         bControl = (Button) findViewById(R.id.button);
 
-        // узнать для чего (int)
         num = (int) (Math.random()*100);
         gameEnd = false;
 
         bControl.setOnClickListener(new View.OnClickListener() {
         // именно этот метод и отрабатывает при нажатии на кнопку, потому что мы его связали с ней
             public void onClick(View v) {
+                if (etInput.getText().toString().trim().isEmpty()) {
+                    etInput.setError(getResources().getString(R.string.error));
+                }
                 if (!gameEnd) {
                     if (etInput.getText().toString() == "") {
                         tvInfo.setText(getResources().getString(R.string.no_input));
